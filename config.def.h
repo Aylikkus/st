@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "NotoSansMono:pixelsize=24:antialias=true:autohint=true";
+static char *font = "Ubuntu Mono:pixelsize=24:antialias=true:autohint=true";
 static int borderpx = 20;
 
 /*
@@ -94,34 +94,34 @@ char *termname = "st-256color";
 unsigned int tabspaces = 8;
 
 /* bg opacity */
-float alpha = 0.9;
+float alpha = 0.97;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
 
   /* 8 normal colors */
-  [0] = "#222222", /* black   */
-  [1] = "#e84f4f", /* red     */
-  [2] = "#b7ce42", /* green   */
-  [3] = "#fea63c", /* yellow  */
-  [4] = "#66aabb", /* blue    */
-  [5] = "#b7416e", /* magenta */
-  [6] = "#6d878d", /* cyan    */
-  [7] = "#dddddd", /* white   */
+  [0] = "#20201d", /* black   */
+  [1] = "#d73737", /* red     */
+  [2] = "#60ac39", /* green   */
+  [3] = "#cfb017", /* yellow  */
+  [4] = "#6684e1", /* blue    */
+  [5] = "#b854d4", /* magenta */
+  [6] = "#1fad83", /* cyan    */
+  [7] = "#a6a28c", /* white   */
 
   /* 8 bright colors */
-  [8]  = "#666666", /* black   */
-  [9]  = "#d23d3d", /* red     */
-  [10] = "#bde077", /* green   */
-  [11] = "#ffe863", /* yellow  */
-  [12] = "#aaccbb", /* blue    */
-  [13] = "#e16a98", /* magenta */
-  [14] = "#42717b", /* cyan    */
-  [15] = "#cccccc", /* white   */
+  [8]  = "#7d7a68", /* black   */
+  [9]  = "#d73737", /* red     */
+  [10] = "#60ac39", /* green   */
+  [11] = "#cfb017", /* yellow  */
+  [12] = "#6684e1", /* blue    */
+  [13] = "#b854d4", /* magenta */
+  [14] = "#1fad83", /* cyan    */
+  [15] = "#fefbec", /* white   */
 
   /* special colors */
-  [256] = "#161616", /* background */
-  [257] = "#ffffff", /* foreground */
+  [256] = "#20201d", /* background */
+  [257] = "#a6a28c", /* foreground */
 };
 
 /*
@@ -204,7 +204,7 @@ static Shortcut shortcuts[] = {
 	{ XK_ANY_MOD,           XK_Print,       printsel,       {.i =  0} },
 	{ TERMMOD,              XK_plus,        zoom,           {.f = +1} },
 	{ TERMMOD,              XK_underscore,  zoom,           {.f = -1} },
-	{ ControlMask,          XK_equal,       zoomreset,      {.f =  0} },
+	{ TERMMOD,              XK_equal,       zoomreset,      {.f =  0} },
 	{ TERMMOD,              XK_C,           clipcopy,       {.i =  0} },
 	{ TERMMOD,              XK_V,           clippaste,      {.i =  0} },
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
@@ -212,6 +212,8 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
 	{ ShiftMask,            XK_Up,          kscrollup,      {.i = -1} },
 	{ ShiftMask,            XK_Down,        kscrolldown,    {.i = -1} },
+    { ControlMask,          XK_minus,       calpha,         {.f = -.01} },
+    { ControlMask,          XK_equal,       calpha,         {.f = +.01} },
 };
 
 /*

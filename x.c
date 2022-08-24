@@ -59,6 +59,7 @@ static void zoom(const Arg *);
 static void zoomabs(const Arg *);
 static void zoomreset(const Arg *);
 static void ttysend(const Arg *);
+static void calpha(const Arg *);
 
 /* config.h for applying patches and the configuration. */
 #include "config.h"
@@ -766,6 +767,22 @@ ushort
 sixd_to_16bit(int x)
 {
 	return x == 0 ? 0 : 0x3737 + 0x2828 * x;
+}
+
+void
+calpha(const Arg *arg)
+{
+    float lowl = .6;
+
+    if (alpha + arg->f <= lowl)
+        alpha = lowl;
+    else if (alpha + arg->f >= 1)
+        alpha = 1;
+    else
+        alpha += arg->f;
+
+    xloadcols();
+	redraw();
 }
 
 int
